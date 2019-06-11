@@ -11,6 +11,12 @@ import AVFoundation
 
 class ViewController: UIViewController {
 
+    override func loadView() {
+        let view = UIView()
+        view.backgroundColor = .white
+        
+        self.view = view
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
