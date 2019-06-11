@@ -9,10 +9,14 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController {
+class CameraViewController: UIViewController {
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func loadView() {
-        let view = UIView()
+        let view = CameraView()
         view.backgroundColor = .white
         
         self.view = view

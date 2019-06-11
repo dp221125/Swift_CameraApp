@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow()
         self.window = window
         
-        let StartViewController = ViewController()
+        let StartViewController = CameraViewController()
         self.window?.rootViewController = StartViewController
         self.window?.makeKeyAndVisible()
         return true
