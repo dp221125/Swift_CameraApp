@@ -76,10 +76,13 @@ class CameraViewController: UIViewController {
         'checkAuthorization' 결과 권한 획득에 실패하면 false를 성공하면 true를 받는다,
      */
     func toggle(_ authorizationResult: Bool) {
-        self.ownView.notLoadLabel.isHidden = authorizationResult
-        self.ownView.goSettingButton.isEnabled = !authorizationResult
-        self.ownView.shootButton.isHidden = !authorizationResult
-        self.ownView.shootButton.isEnabled = authorizationResult
+        DispatchQueue.main.async {
+            self.ownView.notLoadLabel.isHidden = authorizationResult
+            self.ownView.goSettingButton.isEnabled = !authorizationResult
+            self.ownView.shootButton.isHidden = !authorizationResult
+            self.ownView.shootButton.isEnabled = authorizationResult
+            self.ownView.bottomView.isHidden = !authorizationResult
+        }
     }
 
     @objc func goSettingThisApp() {
@@ -162,9 +165,5 @@ extension CameraViewController: AVCapturePhotoCaptureDelegate {
                 self.ownView.resultPhotoView.image = imgae
             }
         }
-    }
-
-    func photoOutput(_: AVCapturePhotoOutput, willCapturePhotoFor _: AVCaptureResolvedPhotoSettings) {
-        AudioServicesDisposeSystemSoundID(1108)
     }
 }

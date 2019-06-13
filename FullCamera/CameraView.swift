@@ -19,7 +19,7 @@ class CameraView: UIView {
 
     let shootButton: UIButton = {
         let shootButton = UIButton()
-        shootButton.backgroundColor = UIColor(named: "AppleBlue")
+        shootButton.backgroundColor = UIColor(named: "LightGreyGreen")
         return shootButton
     }()
 
@@ -29,11 +29,14 @@ class CameraView: UIView {
         notLoadLabel.baselineAdjustment = .alignCenters
         notLoadLabel.font = UIFont.boldSystemFont(ofSize: 26)
         notLoadLabel.adjustsFontSizeToFitWidth = true
+        notLoadLabel.isHidden = true
         return notLoadLabel
     }()
 
     let goSettingButton: UIButton = {
-        UIButton()
+        let goSettingButton = UIButton()
+        goSettingButton.isEnabled = false
+        return goSettingButton
     }()
 
     let bottomView: UIView = {
@@ -46,6 +49,7 @@ class CameraView: UIView {
         let resultPhotoView = UIImageView()
         resultPhotoView.contentMode = UIView.ContentMode.scaleAspectFill
         resultPhotoView.clipsToBounds = true
+        resultPhotoView.isHidden = true
         return resultPhotoView
     }()
 
@@ -136,10 +140,6 @@ class CameraView: UIView {
         self.addViewItem()
         self.addViewItemConstraint()
         self.makeButtonLayer()
-
-        self.notLoadLabel.isHidden = true
-        self.goSettingButton.isEnabled = false
-        self.resultPhotoView.isHidden = true
     }
 
     required init?(coder aDecoder: NSCoder) {
